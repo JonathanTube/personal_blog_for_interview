@@ -1,14 +1,14 @@
 import Head from "next/head"
-import ContactForm from "@/components/contact/contact-form"
+import PostForm from "@/components/post/post-form"
 
-export default function ContactPage() {
+export default function PostPage() {
   return (
     <>
       <Head>
         <title>Contact me</title>
         <meta name="description" content="Send me message." />
       </Head>
-      <ContactForm />
+      <PostForm />
     </>
   )
 }

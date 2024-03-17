@@ -1,8 +1,7 @@
-import classes from "./logo.module.css"
 export default function Logo() {
   return (
     <>
-      <div className={classes.logo}>Jonathan's blog</div>
+      <div className="text-xl text-white md:text-5xl">Jonathan's blog</div>
     </>
   )
 }

@@ -1,9 +1,9 @@
-import FeaturedPosts from "@/components/home-page/featured-posts"
-import Hero from "@/components/home-page/hero"
-import { getFeaturedPosts } from "@/lib/posts-utils"
+import FeaturedArticles from "@/components/home-page/featured-articles"
+import AboutMe from "@/components/home-page/about-me"
+import { getFeaturedArticles } from "@/lib/articles-utils"
 import Head from "next/head"
 
-export default function HomePage({ posts }) {
+export default function HomePage({ articles }) {
   return (
     <>
       <Head>
@@ -11,19 +11,20 @@ export default function HomePage({ posts }) {
         <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="This is Jonathan's blog." />
       </Head>
-      <Hero />
-      <FeaturedPosts posts={posts} />
+
+      <AboutMe />
+
+      <FeaturedArticles articles={articles} />
     </>
   )
 }
 
 export async function getStaticProps() {
-  const featuredPosts = getFeaturedPosts()
-  // console.log(allPosts)
+  const featuredArticles = getFeaturedArticles()
   return {
     props: {
-      posts: featuredPosts
+      articles: featuredArticles,
     },
-    revalidate: 1000
+    revalidate: 1000,
   }
 }
