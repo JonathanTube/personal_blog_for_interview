@@ -1,0 +1,11 @@
+.posts {
+  margin: 0 20rem;
+}
+
+.posts h1 {
+  font-weight: bold;
+  font-size: 3rem;
+  text-align: center;
+  padding: 2rem 0;
+  color: #444;
+}

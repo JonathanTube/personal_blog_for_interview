@@ -1,0 +1,25 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 10rem;
+  background-color: #1f1c1f;
+}
+
+.navigation a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.navigation a:hover {
+  text-decoration: none;
+  color: #87bd1b;
+}
+
+.navigation nav ul {
+  list-style: none;
+  font-weight: bold;
+  font-size: 1.5rem;
+  display: flex;
+  gap: 2rem;
+}

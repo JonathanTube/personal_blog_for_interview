@@ -1,0 +1,14 @@
+.article {
+  margin: 0 auto;
+  max-width: 70%;
+  background-color: #fff;
+  padding: 4rem;
+  border-radius: 0.5rem;
+  margin-top: 2rem;
+}
+
+.image {
+  display: inline-block;
+  border-radius: 5px;
+  overflow: hidden;
+}
