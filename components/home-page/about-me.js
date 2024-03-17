@@ -11,7 +11,7 @@ export default function AboutMe() {
           height={300}
         />
       </div>
-      <h1 className="text-2xl pt-5">Hi, I'm Jonathan</h1>
+      <h1 className="text-2xl pt-5">Hi, I&apos;m Jonathan</h1>
       <p className="w-full px-6 text-center pt-5 text-lg md:w-1/2">
         My blog about fullstack web development - especially frontend frameworks
         like React and Nextjs and backend development such as java.

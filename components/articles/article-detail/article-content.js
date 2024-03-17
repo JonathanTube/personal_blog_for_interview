@@ -10,7 +10,7 @@ export default function ArticleContent({ article }) {
       const { node } = props
       const { children } = node
       if (children.length > 0) {
-        return children.map((item) => {
+        return children.map((item, index) => {
           const { tagName, properties } = item
           if (tagName === "img") {
             const { alt, src } = properties
@@ -23,7 +23,7 @@ export default function ArticleContent({ article }) {
               </div>
             )
           }
-          return <p>{item.value}</p>
+          return <p key={index}>{item.value}</p>
         })
       }
     },
@@ -43,14 +43,9 @@ export default function ArticleContent({ article }) {
   }
 
   if (article) {
-    const imagePath = `/images/articles/${article.slug}/${article.image}`
     return (
       <article className="mx-auto bg-white px-6 py-8 rounded-lg md:mt-8 md:mx-20">
-        <ArticleHeader
-          title={article.title}
-          date={article.date}
-          image={imagePath}
-        />
+        <ArticleHeader title={article.title} date={article.date} />
         <ReactMarkdown components={customComponents}>
           {article.content}
         </ReactMarkdown>
