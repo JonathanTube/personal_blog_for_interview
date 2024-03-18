@@ -2,21 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --font-color: #fff;
+/* customize the style sine there is a conflict between tailwindcss and markdown */
+@layer base {
+  article h1 {
+    @apply text-2xl;
+  }
+  article h2 {
+    @apply text-xl;
+  }
+  article h3 {
+    @apply text-lg;
+  }
+  article ul {
+    list-style-type: disc;
+  }
+
+  article ol {
+    list-style-type: decimal-leading-zero;
+  }
 }
 
-* {
-  padding: 0;
-  margin: 0;
-}
-
-body {
-  background-color: #eee;
-}
-
-#notification-block {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+@media screen and (min-width: 768px) {
+  body {
+    background-color: #eee;
+  }
 }

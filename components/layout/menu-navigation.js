@@ -10,7 +10,7 @@ export default function MenuNavigation() {
     <>
       {isMenuOpen && (
         <nav
-          className="pt-4 bg-gray-800 opacity-90 absolute w-full h-full md:hidden"
+          className="fixed overflow-y-hidden pt-4 bg-gray-800 opacity-90 w-full h-full md:hidden"
           onClick={toggleMenuIsOpen}
         >
           <ul className="list-none text-white text-lg">

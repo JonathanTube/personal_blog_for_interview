@@ -7,10 +7,7 @@ export default function AllArticlesPage({ articles }) {
     <>
       <Head>
         <title>All Articles</title>
-        <meta
-          name="description"
-          content="A list of all my sklled program languages."
-        />
+        <meta name="description" content="A list of all all articles." />
       </Head>
       <AllArticles articles={articles} />
     </>

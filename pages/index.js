@@ -1,6 +1,6 @@
 import FeaturedArticles from "@/components/home/featured-articles"
-import AboutMe from "@/components/home-page/about-me"
-import { getFeaturedArticles } from "@/lib/db-utils"
+import AboutMe from "@/components/home/about-me"
+import { getLatest10Articles } from "@/lib/db-utils"
 import Head from "next/head"
 
 export default function HomePage({ articles }) {
@@ -8,7 +8,6 @@ export default function HomePage({ articles }) {
     <>
       <Head>
         <title>Welcome to my blog</title>
-        <link rel="icon" href="/favicon.ico" />
         <meta name="description" content="This is Jonathan's blog." />
       </Head>
 
@@ -20,10 +19,10 @@ export default function HomePage({ articles }) {
 }
 
 export async function getStaticProps() {
-  const featuredArticles = getFeaturedArticles()
+  const latest10Articles = getLatest10Articles()
   return {
     props: {
-      articles: featuredArticles,
+      articles: latest10Articles,
     },
     revalidate: 1000,
   }

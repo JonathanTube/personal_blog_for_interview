@@ -7,7 +7,6 @@ export default function Document() {
       <body>
         <Main />
         <NextScript />
-        <div id="notification-block"></div>
       </body>
     </Html>
   )

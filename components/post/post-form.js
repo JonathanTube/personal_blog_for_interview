@@ -1,21 +1,27 @@
-import { useState } from "react"
-import Notification from "../ui/notification"
+import { useState, useContext, useRef } from "react"
+import NotificationContext from "@/store/notification-context"
 
 export default function PostForm() {
+  const formRef = useRef(null)
+  const notificationCtx = useContext(NotificationContext)
+  const { showNotification } = notificationCtx
+
   const [enteredTitle, setEnteredTitle] = useState("")
   const [enteredContent, setEnteredContent] = useState("")
-  const [enteredCreateDate, setEnteredCreateDate] = useState()
-  const [isShowNotifications, setIsShowNotifications] = useState(false)
+  const now = new Date().toISOString().split("T")[0]
+  const [enteredCreateDate, setEnteredCreateDate] = useState(now)
+  const [enteredShowInHome, setEnteredShowInHome] = useState(true)
 
   function submitHandler(event) {
     event.preventDefault()
 
     const title = document.getElementById("title").value
     if (title.trim() === "") {
+      showNotification("error", "Error", "The title shouldn't be empty!")
+      return
     }
     const content = document.getElementById("content").value
     const createDate = document.getElementById("createDate").value
-
     fetch("/api/article", {
       method: "POST",
       headers: {
@@ -27,7 +33,12 @@ export default function PostForm() {
         createDate,
       }),
     }).then((res) => {
-      setIsShowNotifications(true)
+      showNotification(
+        "success",
+        "Success",
+        "Publish a new article successfully!"
+      )
+      formRef.current.reset()
     })
   }
 
@@ -40,7 +51,7 @@ export default function PostForm() {
       <h1 className="font-semibold text-xl text-center md:text-4xl">
         Post a new article
       </h1>
-      <form onSubmit={submitHandler}>
+      <form ref={formRef} onSubmit={submitHandler}>
         <div className="mt-5">
           <label htmlFor="title" className="text-lg">
             Title
@@ -71,15 +82,16 @@ export default function PostForm() {
         </div>
 
         <div className="mt-5">
-          <label htmlFor="message" className="text-lg">
+          <label htmlFor="createDate" className="text-lg">
             Publish Date
           </label>
           <input
             type="date"
             id="createDate"
             required
+            defaultValue={enteredCreateDate}
             placeholder="Please input publish date"
-            className="h-10 w-full rounded-sm resize-y p-2 mt-2"
+            className="h-10 w-full rounded-sm p-2 mt-2"
             onChange={(event) => setEnteredCreateDate(event.target.value)}
           />
         </div>
@@ -90,14 +102,6 @@ export default function PostForm() {
           </button>
         </div>
       </form>
-
-      {isShowNotifications && (
-        <Notification
-          status="success"
-          title="success"
-          message="post new article successfully."
-        />
-      )}
     </div>
   )
 }

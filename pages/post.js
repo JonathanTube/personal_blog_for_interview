@@ -5,9 +5,10 @@ export default function PostPage() {
   return (
     <>
       <Head>
-        <title>Contact me</title>
-        <meta name="description" content="Send me message." />
+        <title>Post a new article</title>
+        <meta name="description" content="Post a new article." />
       </Head>
+
       <PostForm />
     </>
   )

@@ -5,6 +5,7 @@ import { createPortal } from "react-dom"
 import { useRouter } from "next/navigation"
 
 export default function ArticlePage({ article }) {
+  console.log(article.content)
   const router = useRouter()
   const goBackHandler = () => {
     router.back()
