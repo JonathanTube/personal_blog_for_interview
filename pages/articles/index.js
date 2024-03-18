@@ -1,6 +1,6 @@
 import Head from "next/head"
 import AllArticles from "@/components/articles/all-articles"
-import { getAllArticles } from "@/lib/articles-utils"
+import { getAllArticles } from "@/lib/db-utils"
 
 export default function AllArticlesPage({ articles }) {
   return (

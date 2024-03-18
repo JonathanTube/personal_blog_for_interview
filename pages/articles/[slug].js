@@ -1,6 +1,6 @@
 import Head from "next/head"
 import ArticleContent from "@/components/articles/article-detail/article-content"
-import { getArticleData } from "@/lib/articles-utils"
+import { getArticleData } from "@/lib/db-utils"
 import { createPortal } from "react-dom"
 import { useRouter } from "next/navigation"
 
@@ -32,11 +32,17 @@ export async function getStaticProps(context) {
 
   const { slug } = params
 
-  const articleData = await getArticleData(slug)
+  const articleData = getArticleData(slug)
+
+  if (articleData.length === 0) {
+    return {
+      notFound: true,
+    }
+  }
 
   return {
     props: {
-      article: articleData,
+      article: articleData[0],
     },
     revalidate: 60,
   }

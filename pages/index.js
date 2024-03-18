@@ -1,6 +1,6 @@
-import FeaturedArticles from "@/components/home-page/featured-articles"
+import FeaturedArticles from "@/components/home/featured-articles"
 import AboutMe from "@/components/home-page/about-me"
-import { getFeaturedArticles } from "@/lib/articles-utils"
+import { getFeaturedArticles } from "@/lib/db-utils"
 import Head from "next/head"
 
 export default function HomePage({ articles }) {

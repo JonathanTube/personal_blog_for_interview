@@ -4,22 +4,35 @@ import Notification from "../ui/notification"
 export default function PostForm() {
   const [enteredTitle, setEnteredTitle] = useState("")
   const [enteredContent, setEnteredContent] = useState("")
+  const [enteredCreateDate, setEnteredCreateDate] = useState()
   const [isShowNotifications, setIsShowNotifications] = useState(false)
 
   function submitHandler(event) {
     event.preventDefault()
+
+    const title = document.getElementById("title").value
+    if (title.trim() === "") {
+    }
+    const content = document.getElementById("content").value
+    const createDate = document.getElementById("createDate").value
+
     fetch("/api/article", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        title: document.getElementById("title").value,
-        content: document.getElementById("content").value,
+        title,
+        content,
+        createDate,
       }),
     }).then((res) => {
       setIsShowNotifications(true)
     })
+  }
+
+  const changeContentHandler = (content) => {
+    setEnteredContent(content)
   }
 
   return (
@@ -35,6 +48,7 @@ export default function PostForm() {
           <input
             type="text"
             id="title"
+            maxLength={200}
             placeholder="Please input the article title"
             required
             className="h-10 w-full rounded-sm pl-2 mt-2"
@@ -49,12 +63,27 @@ export default function PostForm() {
           <textarea
             id="content"
             required
-            placeholder="Please input markdown content"
+            placeholder="Please input some markdown content"
             rows={20}
             className="h-10 w-full rounded-sm resize-y p-2 mt-2 min-h-40"
             onChange={(event) => setEnteredContent(event.target.value)}
           />
         </div>
+
+        <div className="mt-5">
+          <label htmlFor="message" className="text-lg">
+            Publish Date
+          </label>
+          <input
+            type="date"
+            id="createDate"
+            required
+            placeholder="Please input publish date"
+            className="h-10 w-full rounded-sm resize-y p-2 mt-2"
+            onChange={(event) => setEnteredCreateDate(event.target.value)}
+          />
+        </div>
+
         <div className="text-center">
           <button className="text-white font-bold rounded-lg text-lg mt-5 px-10 h-10 bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
             Submit
